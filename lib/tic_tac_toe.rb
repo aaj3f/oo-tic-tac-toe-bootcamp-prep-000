@@ -23,7 +23,7 @@ def display_board
 end
 
 def input_to_index(input)
-  @index = input.to_i - 1
+  input.to_i - 1
 end
 
 def move(index, token = "X")
@@ -40,10 +40,11 @@ end
 
 def turn
   puts "Please enter 1-9:"
-  @index = gets.strip.to_i - 1
-  if valid_move?(@index)
+  input = gets.strip
+  index = input_to_index(input)
+  if valid_move?(index)
     token = current_player
-    move(@index, token)
+    move(index, token)
     display_board
   else
     turn
