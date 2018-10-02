@@ -41,7 +41,7 @@ end
 def turn
   puts "Please enter 1-9:"
   @index = gets.strip.to_i - 1
-  if valid_move?(index)
+  if valid_move?(@index)
     token = current_player
     move(index, token)
     display_board
