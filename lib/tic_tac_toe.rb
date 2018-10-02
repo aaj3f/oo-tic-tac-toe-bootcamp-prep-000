@@ -65,27 +65,27 @@ def current_player
   turn_number.even? ? "X" : "O"
 end
 
-def won?(board)
+def won?
     WIN_COMBINATIONS.detect do |i|
       win_index_1 = i[0]
       win_index_2 = i[1]
       win_index_3 = i[2]
-      position_1 = board[win_index_1]
-      position_2 = board[win_index_2]
-      position_3 = board[win_index_3]
+      position_1 = @board[win_index_1]
+      position_2 = @board[win_index_2]
+      position_3 = @board[win_index_3]
       ((position_1 == "X" && position_2 == "X" && position_3 == "X") || (position_1 == "O" && position_2 == "O" && position_3 == "O"))
     end
 end
   
-def full?(board)
-    board.all? do |i|
+def full?
+    @board.all? do |i|
        i == "X" || i == "O"
     end
 end
 
-def draw?(board)
-  if full?(board)
-    if !(won?(board))
+def draw?
+  if full?
+    if !(won?)
       return true
     else
       return false
@@ -95,26 +95,26 @@ def draw?(board)
   end
 end
   
-def over?(board)
-  draw?(board) || won?(board)
+def over?
+  draw? || won?
 end
   
-def winner(board)
-  if (won?(board))
-    winning_array = won?(board)
-    return board[winning_array[0]]
+def winner
+  if (won?)
+    winning_array = won?
+    return @board[winning_array[0]]
   else
     return nil
   end
 end
 
-def play(board)
-  until over?(board) do
-  turn (board)
+def play
+  until over? do
+  turn
   end
-if won?(board)
-  puts "Congratulations #{winner(board)}!"
-elsif draw?(board)
+if won?
+  puts "Congratulations #{winner}!"
+elsif draw?
   puts "Cat's Game!"
 end
 end
