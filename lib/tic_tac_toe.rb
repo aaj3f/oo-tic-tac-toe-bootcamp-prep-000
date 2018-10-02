@@ -50,9 +50,9 @@ def turn
   end
 end
 
-def turn_count(board)
+def turn_count
   turn_number = 0
-  board.each do |token|
+  @board.each do |token|
     if (token == "X" || token == "O")
       turn_number += 1
     end
@@ -60,8 +60,8 @@ def turn_count(board)
   return turn_number
 end
 
-def current_player(board)
-  turn_number = turn_count(board)
+def current_player
+  turn_number = turn_count
   turn_number.even? ? "X" : "O"
 end
 
